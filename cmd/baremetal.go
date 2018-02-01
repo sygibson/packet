@@ -7,6 +7,7 @@ import (
 )
 
 var silent bool
+var alwaysPXE bool
 var spotInstance bool
 var spotPriceMax float64
 
@@ -48,7 +49,7 @@ var createDeviceCmd = &cobra.Command{
 		facility := cmd.Flag("facility").Value.String()
 		osType := cmd.Flag("os-type").Value.String()
 		billing := cmd.Flag("billing").Value.String()
-		alwaysPXE := cmd.Flag("always-pxe").Value.Bool()
+		//alwaysPXE := cmd.Flag("always-pxe").Value.Bool()
 		userDataFile := cmd.Flag("file").Value.String()
 		if userDataFile != "" {
 			data, err := ioutil.ReadFile(userDataFile)
@@ -159,9 +160,10 @@ func init() {
 	createDeviceCmd.Flags().String("facility", "", "DC location. Available values are sjc1: Sunnyvale CA, ewr1: Parsippany NJ, ams1: Amsterdam NL, nrt1: Tokyo JP")
 	createDeviceCmd.Flags().String("os-type", "centos_7", "Operating system to deploy to the server.")
 	createDeviceCmd.Flags().String("billing", "hourly", "Choose \"hourly\" or \"monthly\" billing.")
-	createDeviceCmd.Flags().Bool("always-pxe", false, "Set \"always_pxe\" to \"true\" or \"false\". (default: false)")
+	//createDeviceCmd.Flags().Bool("always-pxe", false, "Set \"always_pxe\" to \"true\" or \"false\". (default: false)")
 	createDeviceCmd.Flags().StringP("file", "f", "", "Read userdata from a file.")
 	createDeviceCmd.Flags().String("userdata", "", "Set userdata; overrides \"--file\" userdata.")
+	createDeviceCmd.Flags().BoolVarP(&alwaysPXE, "always-pxe", false, "Set \"always_pxe\" to \"true\" or \"false\". (default: false)")
 	createDeviceCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Omit provisioning logs")
 	createDeviceCmd.Flags().BoolVarP(&spotInstance, "spot-instance", "", false, "Create as a spot instance")
 	createDeviceCmd.Flags().Float64VarP(&spotPriceMax, "spot-price-max", "", 0.0, "Spot market price bid.")
