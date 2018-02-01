@@ -182,7 +182,7 @@ func CreateDevice(projectID, hostname, plan, facility, operatingSystem, billingC
 }
 
 // CreateDeviceVerbose creates a new device and logs events till the device is provisionned
-func CreateDeviceVerbose(projectID, hostname, plan, facility, operatingSystem, billingCycle, userData string, tags []string, spotInstance bool, spotPriceMax float64) error {
+func CreateDeviceVerbose(projectID, hostname, plan, facility, operatingSystem, billingCycle, alwaysPXE, userData string, tags []string, spotInstance bool, spotPriceMax float64) error {
 	client, err := NewPacketClient()
 	if err != nil {
 		return err

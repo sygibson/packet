@@ -49,9 +49,6 @@ var createDeviceCmd = &cobra.Command{
 		osType := cmd.Flag("os-type").Value.String()
 		billing := cmd.Flag("billing").Value.String()
 		alwaysPXE := cmd.Flag("always-pxe").Value.Boolean()
-		if alwaysPXE == "" {
-			alwaysPXE := false
-		}
 		userDataFile := cmd.Flag("file").Value.String()
 		if userDataFile != "" {
 			data, err := ioutil.ReadFile(userDataFile)
