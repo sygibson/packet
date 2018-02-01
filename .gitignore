@@ -1,0 +1,5 @@
+bin/
+cli/
+packet.wiki
+.vscode
+.idea
