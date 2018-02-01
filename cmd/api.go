@@ -7,7 +7,7 @@ import (
 
 	"github.com/packethost/packngo"
 
-	"github.com/ebsarr/packet/extpackngo"
+	"github.com/sygibson/packet/extpackngo"
 )
 
 // Ifs to Facility API
